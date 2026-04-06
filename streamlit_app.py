@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, asdict
+from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 import base64
 import io
@@ -15,9 +16,9 @@ st.set_page_config(page_title="FAO Diagnostic Test", layout="wide")
 # Helpers
 # ----------------------------
 def img_to_base64(path: str) -> str:
-    with open(path, "rb") as f:
+    file_path = Path(__file__).parent / path
+    with open(file_path, "rb") as f:
         return base64.b64encode(f.read()).decode("utf-8")
-
 
 logo_b64 = img_to_base64("EAB-Logo-RGB.png")
 
